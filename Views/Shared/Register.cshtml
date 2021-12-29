@@ -1,0 +1,44 @@
+@model WeddingPlanner.Models.User
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <form asp-action="Register">
+        <div class="RegBody">
+            <div>
+                <span asp-validation-for="FirstName"></span>
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName">
+
+                <span asp-validation-for="LastName"></span>
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName">
+
+                <span asp-validation-for="Email"></span>
+                <label asp-for="Email"></label>
+                <input asp-for="Email">
+            </div>
+            <div>
+                <span asp-validation-for="Password"></span>
+                <label asp-for="Password"></label>
+                <input asp-for="Password">
+
+                <span asp-validation-for="ConfirmPassword"></span>
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword">
+
+                <button>Sign up Now</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

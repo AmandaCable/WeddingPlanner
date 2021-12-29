@@ -1,0 +1,30 @@
+@using WeddingPlanner.Models;
+@model Rsvp;
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+</head>
+
+<body>
+    <div>
+        <h1>@ViewBag.ThisWedding.WedderOne and @ViewBag.ThisWedding.WedderTwo's Wedding!</h1>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/">Log out</a>
+    </div>
+    <h3>Date: @ViewBag.ThisWedding.Date</h3>
+    <h3>Guests:</h3>
+    <ul>
+        @foreach (var guests in @ViewBag.AllGuests)
+        {
+            <li>@guests.FirstName @guests.LastName</li>
+        }
+    </ul>
+</body>
+
+</html>

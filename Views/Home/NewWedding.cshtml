@@ -1,0 +1,46 @@
+@using WeddingPlanner.Models;
+@model Wedding;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Plan Your Wedding!</h1>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/">Logout</a>
+    </div>
+    <div>
+        <form asp-action="CreateWedding">
+            <div>
+                <span asp-validation-for="WedderOne"></span>
+                <label asp-for="WedderOne"></label>
+                <input asp-for="WedderOne">
+
+                <span asp-validation-for="WedderTwo"></span>
+                <label asp-for="WedderTwo"></label>
+                <input asp-for="WedderTwo">
+
+                <span asp-validation-for="Date"></span>
+                <label asp-for="Date"></label>
+                <input asp-for="Date">
+
+                <span asp-validation-for="Address"></span>
+                <label asp-for="Address"></label>
+                <input asp-for="Address">
+
+                <button>Create</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

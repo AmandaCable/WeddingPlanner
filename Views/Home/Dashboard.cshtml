@@ -1,0 +1,57 @@
+@using WeddingPlanner.Models;
+@model List<Wedding>;
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+</head>
+
+<body>
+    <div>
+        <h1>Welcome to the Wedding Planner!</h1>
+        <a href="/">Logout</a>
+    </div>
+    <table>
+        <thead>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            @foreach (var wedding in ViewBag.AllWeddings)
+            {
+                Wedding ThisWedding = wedding;
+                <tr>
+                    <td><a href="/wedding/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                    <td>@wedding.Date</td>
+                    <td>@wedding.Rsvp.Count</td>
+                    <td>
+                        @if (wedding.CreatorId == ViewBag.LoggedInUser)
+                        {
+                            <a href="/@wedding.WeddingId/delete">Delete</a>
+                            <a href="/edit/@wedding.WeddingId">Edit</a>
+                        }
+                        else if (ThisWedding.Rsvp.Any(rsvp => rsvp.RsvpUserId == ViewBag.LoggedInUser))
+                        {
+                            <a href="rsvp/delete/@wedding.WeddingId/@ViewBag.LoggedInUser">Un-RSVP</a>
+                        }
+                        else
+                        {
+                            <a href="/rsvp/@wedding.WeddingId">RSVP</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/wedding/new"><button>New Wedding</button></a>
+</body>
+
+</html>
